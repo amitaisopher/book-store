@@ -30,7 +30,7 @@ const Cart: FC = () => {
               aria-label="Shopping Cart"
             >
               <div>
-                <ShoppingCart className="h-6 w-6" />
+                <ShoppingCart data-testid="shopping-cart-icon" className="h-6 w-6" />
                 <span className="sr-only">Shopping Cart</span>
                 {cartItemsAmount > 0 && <Badge  className="absolute top-[-17px] left-[13px]">{cartItemsAmount}</Badge>}
               </div>

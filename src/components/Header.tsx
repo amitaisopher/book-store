@@ -30,12 +30,12 @@ const Header = () => {
     <header className="sm:flex sm:justify-between py-3 px-4 border-b mb-5">
       <Container>
         <div className="flex-col h-[140px] md:flex-row relative px-4 sm:px-6 lg:px-8 flex md:h-16 items-center justify-between w-full">
-          <div className="flex items-center">
+          <div data-testid="header-title" className="flex items-center">
            The Book Store
           </div>
-          <SearchBar value={userSearchString} onChange={searchHandler} className="max-w-xs"></SearchBar>
+          <SearchBar data-testid="book-store-search-bar" value={userSearchString} onChange={searchHandler} className="max-w-xs"></SearchBar>
            <div className="flex items-center">
-            <Button onClick={() => clearCart()}>Clear cart</Button>
+            <Button data-testid="clear-cart-button" onClick={() => clearCart()}>Clear cart</Button>
             
             <Cart/>
             
