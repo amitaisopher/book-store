@@ -65,8 +65,7 @@ export const ShopContextProvider: FC<ShopContextProviderProps> = ({children}) =>
                 return prevState
             }
             if (prevState[itemId].amount === 1) {
-                delete prevState[itemId]
-                return {...prevState}
+                return Object.fromEntries(Object.entries(prevState).filter(([key, ]) => key !== itemId))
             }
             return {...prevState, [itemId]: {...prevState[itemId], amount: prevState[itemId].amount -1}}
         })}
@@ -75,8 +74,7 @@ export const ShopContextProvider: FC<ShopContextProviderProps> = ({children}) =>
         setCartItems((prevState) => {
             if (!(itemId in prevState)) return prevState
             if (amount <= 0) {
-                delete prevState[itemId]
-                return {...prevState}
+                return Object.fromEntries(Object.entries(prevState).filter(([key, ]) => key !== itemId))
             }
             return {...prevState, [itemId]: {...prevState[itemId], amount}}
         })
