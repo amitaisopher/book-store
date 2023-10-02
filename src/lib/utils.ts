@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { GoogleBooksVolumeResponse as booksDummyData } from '@/assets/dummyData'
 import { BookResponse } from "types"
+import DOMPurify from 'dompurify';
 
 
 export function cn(...inputs: ClassValue[]) {
@@ -16,6 +17,8 @@ type fetchBookDataParams = {
 }
 
 export function composeQueryParamValue(searchValue: string, suffix: string = 'cyber') {
+  const purify = DOMPurify(window)
+  searchValue = purify.sanitize(searchValue)
   let query: string = `${searchValue.replace(/\s+/g, '+')}`
   query = query.length == 0 || query[query.length - 1] === '+' ? query.concat(suffix) : query.concat(`+${suffix}`)
   return query
